@@ -2,7 +2,7 @@
 
 make clean
 make cleansrc
-make DEBUG= -j20
+make DEBUG= -j
 
 ROUNDS=3
 ROOT=31
@@ -15,7 +15,8 @@ EXP_NAME=${EXP_NAME}-${TIMESTAMP}
 O_DIR=${LOG}/${EXP_NAME}
 mkdir -p ${O_DIR}
 
-for DATASET in web-Google; do 
+#for DATASET in web-Google soc-LiveJournal1 dbpedia-link twitter_rv twitter_mpi friendster pld-arc sd-arc road-raod-usa; do
+for DATASET in web-Google; do
     echo "DATASET: ${DATASET}"
     for app in Radii BC-iters BellmanFord-iters PageRank PageRankDelta; do #BC BellmanFord
         echo "app: ${app}"
@@ -26,7 +27,7 @@ for DATASET in web-Google; do
             DEG="in"
         fi
         echo "DEGREE_USED_FOR_REORDERING: ${DEGREE_USED_FOR_REORDERING}"
-        for REORDERING_ALGO in 0 1 2 3 4 5 6 7 10; do
+        for REORDERING_ALGO in 0 1 2 3 4 5 6 7; do
             echo "REORDERING_ALGO: ${REORDERING_ALGO}"
                 make DEGREE_USED_FOR_REORDERING=${DEGREE_USED_FOR_REORDERING} REORDERING_ALGO=${REORDERING_ALGO} ROUNDS=${ROUNDS} ROOT=${ROOT} DATASET=${DATASET} MAP_FILE=${DBG_ROOT}/datasets/${DATASET}.${DEG}.map run-${app}  > ${O_DIR}/${app}.${DATASET}.${DEGREE_USED_FOR_REORDERING}.${REORDERING_ALGO}.log 2>&1
        done

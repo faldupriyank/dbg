@@ -270,8 +270,9 @@ int check_supported_in_out_format_pairs(const string& in, const string& out) {
             cout << supported_lists[i][0] << " to " << supported_lists[i][1] << endl;
         }
         return -1;
-
     }
+
+    return 0;
 }
 
 int make_symmetric_edges(const vector<edge_t>& edges, vector<edge_t>& symmetric_edges, const uint64_t& num_vert, const uint64_t& num_edges) {

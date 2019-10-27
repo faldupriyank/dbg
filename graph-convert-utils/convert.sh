@@ -26,7 +26,7 @@ make -f ${DBG_ROOT}/graph-convert-utils/Makefile
 #${DBG_ROOT}/graph-convert-utils/convert el bel ${DATASET}
 #${DBG_ROOT}/graph-convert-utils/convert el vgr ${DATASET}
 ${DBG_ROOT}/graph-convert-utils/convert el cvgr ${DATASET}
-${DBG_ROOT}/graph-convert-utils/convert el csvgr ${DATASET}
+#${DBG_ROOT}/graph-convert-utils/convert el csvgr ${DATASET}
 ${DBG_ROOT}/graph-convert-utils/convert el cintgr ${DATASET}
 #${DBG_ROOT}/graph-convert-utils/convert bel vgr ${DATASET}
 #${DBG_ROOT}/graph-convert-utils/convert bel cvgr ${DATASET}

@@ -308,7 +308,7 @@ graph<vertex> readGraphFromFile(char* fname, bool isSymmetric, bool mmap) {
     if ( (m % 2) == 1 ) {
         unsigned int x = 0;
         ifs.read((char*)&x, sizeof(unsigned int));
-        std::cout << "extra element: " << x << std::endl;
+        //std::cout << "extra element: " << x << std::endl;
         assert(x == 0);
     }
 	ifs.read((char*)&edges_[m], sizeof(unsigned int) * m);
@@ -316,7 +316,7 @@ graph<vertex> readGraphFromFile(char* fname, bool isSymmetric, bool mmap) {
 		std::cout << "Error in reading edges." << std::endl;
 		abort();
 	}
-    std::cout << edges_[m] << std::endl;
+    //std::cout << edges_[m] << std::endl;
     {parallel_for(long i=0; i<m; i++) {
       edges[2*i] = edges_[i];
       edges[2*i+1] = edges_[i+m];

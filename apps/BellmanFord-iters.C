@@ -108,15 +108,8 @@ void Compute(graph<vertex>& GA, commandLine P, pvector<uintE> &new_ids) {
           Frontier = output;
           round++;
       }
-      Frontier.del(); free(Visited);
-#ifdef _OUTPUT_
-      tm.Stop();
-      sampleOutput(ShortestPathLen, preprocessed, new_ids);
-      free(ShortestPathLen);
-#else
-      free(ShortestPathLen);
+      Frontier.del(); free(Visited); free(ShortestPathLen);
   }
   tm.Stop();
-#endif
-  tm.PrintTime("BellmanFord Run Time(sec) ", tm.Seconds()); 
+  tm.PrintTime("BellmanFord-iters Run Time(sec) ", tm.Seconds()); 
 }

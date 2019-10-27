@@ -37,7 +37,7 @@ VGR = -DVGR
 endif
 
 PCC = g++
-PCFLAGS = -std=c++14 -fopenmp -march=native -O3 -DOPENMP $(INTT) $(INTE) $(CODE) $(PD) $(MEM) $(ALIGN) $(VGR)
+PCFLAGS = -std=c++14 -fopenmp -march=native -O3 -DOPENMP $(INTT) $(INTE) $(CODE) $(PD) $(MEM) $(ALIGN) $(VGR) #-D_OUTPUT_
 
 COMMON_FILES= ligra.h graph.h compressedVertex.h vertex.h utils.h IO.h parallel.h gettime.h timer.h index_map.h maybe.h sequence.h edgeMap_utils.h binary_search.h quickSort.h blockRadixSort.h transpose.h parseCommandLine.h byte.h byteRLE.h nibble.h byte-pd.h byteRLE-pd.h nibble-pd.h vertexSubset.h encoder.C decoder.C pvector.h dbg.h
 
@@ -140,11 +140,11 @@ run-BellmanFord: #PUSH (IN_DEGREE) WEIGHTED
 	${NUMA} ${TASKSET} ${DBG_ROOT}/apps/BellmanFord -reordering_algo ${REORDERING_ALGO} -is_dense_write 1 -r ${ROOT} ${COMMON} ${GPATH}/${DATASET}${CINTGR}
 
 run-BellmanFord-iters: #PUSH (IN_DEGREE) WEIGHTED
-	${NUMA} ${TASKSET} ${DBG_ROOT}/apps/BellmanFord -reordering_algo ${REORDERING_ALGO} -is_dense_write 1 ${COMMON} ${GPATH}/${DATASET}${CINTGR}
+	${NUMA} ${TASKSET} ${DBG_ROOT}/apps/BellmanFord-iters -reordering_algo ${REORDERING_ALGO} -is_dense_write 1 ${COMMON} ${GPATH}/${DATASET}${CINTGR}
 
 run-BC: # PULL-PUSH (OUT_DEGREE)
 	${NUMA} ${TASKSET} ${DBG_ROOT}/apps/BC -reordering_algo ${REORDERING_ALGO} -r ${ROOT} ${COMMON} ${GPATH}/${DATASET}${CVGR}
 
 run-BC-iters: # PULL-PUSH (OUT_DEGREE)
-	${NUMA} ${TASKSET} ${DBG_ROOT}/apps/BC -reordering_algo ${REORDERING_ALGO} ${COMMON} ${GPATH}/${DATASET}${CVGR}
+	${NUMA} ${TASKSET} ${DBG_ROOT}/apps/BC-iters -reordering_algo ${REORDERING_ALGO} ${COMMON} ${GPATH}/${DATASET}${CVGR}
 
